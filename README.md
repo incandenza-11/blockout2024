@@ -23,6 +23,10 @@ This script will ask you to provide both your username and password to be able t
 This repository does not keep track of any sensitive data as it is executed in your computer locally. 
 
 
+### Usage example
+
+![example.jpeg](resources/example.jpeg)
+
 ## Contribute
 
 The list of usernames that will be blocked when executed are:
