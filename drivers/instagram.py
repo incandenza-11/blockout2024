@@ -20,6 +20,7 @@ class InstagramClient(BaseClient):
 
         client = Client()
         client.login(username, password)
+        client.delay_range = [1, 4]
         print('Successfully logged in to Instagram.')
         return client
 
