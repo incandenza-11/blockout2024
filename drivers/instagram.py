@@ -1,7 +1,7 @@
 from typing import Optional
 
 from instagrapi import Client
-from instagrapi.exceptions import UserNotFound
+from instagrapi.exceptions import UserNotFound, ChallengeRequired, TwoFactorRequired
 
 from drivers.base_client import BaseClient
 
@@ -10,16 +10,36 @@ class InstagramClient(BaseClient):
     def __init__(self):
         super().__init__()
         self.client = self.start_client()
+        if self.client is None:
+            raise Exception("Failed to initialize Instagram client.")
         self.usernames_filename = "instagram_usernames.txt"
 
     @staticmethod
-    def start_client() -> Client:
+    def start_client() -> Optional[Client]:
         print('Logging in to Instagram...')
-        username = input(f'Enter your Instagram username: ')
-        password = input(f'Enter your Instagram password: ')
+        username = input('Enter your Instagram username: ')
+        password = input('Enter your Instagram password: ')
 
         client = Client()
-        client.login(username, password)
+
+        try:
+            client.login(username, password)
+        except TwoFactorRequired as e:
+            print('Two-factor authentication required.')
+            two_factor_code = input('Enter the 2FA code: ')
+            try:
+                client.login(username, password, verification_code=two_factor_code)
+            except Exception as e2:
+                print(f'Two-factor login error: {e2}')
+                return None
+        except ChallengeRequired as e:
+            print('Challenge required. Please approve the login on your Instagram app or enter the code sent to your email/phone.')
+            client.challenge_resolve(client.last_json)
+            return None
+        except Exception as e:
+            print(f'Login error: {e}')
+            return None
+
         client.delay_range = [1, 4]
         print('Successfully logged in to Instagram.')
         return client
@@ -37,7 +57,7 @@ class InstagramClient(BaseClient):
             return self.client.user_info_by_username_v1(username).dict()['pk']
         except UserNotFound:
             print(f'User {username} has already been blocked or does not exist.')
-            return
+            return None
 
     def block_users(self) -> None:
         usernames = self.get_usernames_from_file()
@@ -48,3 +68,13 @@ class InstagramClient(BaseClient):
                 self.client.user_block(user_id)
                 print(f"User {username} with id {user_id} blocked successfully.")
         print("Blocking complete.")
+
+
+# Entry point for the script
+def main():
+    client = InstagramClient()
+    client.block_users()
+
+
+if __name__ == "__main__":
+    main()
