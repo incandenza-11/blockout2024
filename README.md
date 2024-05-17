@@ -25,7 +25,7 @@ This repository does not keep track of any sensitive data as it is executed in y
 
 ### Usage example
 
-![example.jpeg](resources/example.jpeg)
+![example.jpg](resources/example.jpg)
 
 ## Contribute
 
