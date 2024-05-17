@@ -1,4 +1,4 @@
-# BlockOut2024 Automated Script
+# BlockOut2024 Automated Script w/ 2FA
 
 Automated script for BlockOut2024 to easily block celebrities from Instagram. (TikTok compatibility in progress.)
 
