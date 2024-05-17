@@ -1,7 +1,7 @@
 # BlockOut2024 Automated Script w/ 2FA
 
 Automated script for BlockOut2024 to easily block celebrities from Instagram. (TikTok compatibility in progress.)
-
+Now with 900+ accounts including businesses.
 
 ## Setup
 
@@ -29,7 +29,7 @@ This repository does not keep track of any sensitive data as it is executed in y
 
 ## Contribute
 
-The list of usernames that will be blocked when executed are:
+The list of usernames that will be blocked when executed arein the following files:
 
 - `instagram_usernames.txt` for Instagram
 - `tiktok_usernames.txt` for TikTok
