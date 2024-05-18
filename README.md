@@ -1,6 +1,6 @@
 # BlockOut2024 Automated Script
 
-Automated script for BlockOut2024 to easily block celebrities from Instagram. (TikTok compatibility in progress.)
+Automated script for BlockOut2024 to easily block celebrities from Instagram.
 
 
 ## Setup
@@ -27,11 +27,6 @@ This repository does not keep track of any sensitive data as it is executed in y
 
 ![example.jpeg](resources/example.jpeg)
 
-## Contribute
-
 The list of usernames that will be blocked when executed are:
 
-- `instagram_usernames.txt` for Instagram
-- `tiktok_usernames.txt` for TikTok
-
-Feel free to contribute to this project to keep both username lists updated.
+- `resources/usernames/instagram.txt` for Instagram

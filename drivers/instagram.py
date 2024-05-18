@@ -10,7 +10,7 @@ class InstagramClient(BaseClient):
     def __init__(self):
         super().__init__()
         self.client = self.start_client()
-        self.usernames_filename = "instagram_usernames.txt"
+        self.usernames_filename = "resources/usernames/instagram.txt"
 
     @staticmethod
     def start_client() -> Client:
