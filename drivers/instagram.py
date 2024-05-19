@@ -3,6 +3,7 @@ from typing import Optional
 from instagrapi import Client
 from instagrapi.exceptions import UserNotFound, ChallengeRequired, TwoFactorRequired, LoginRequired
 
+from drivers import PROJECT_ROOT_PATH
 from drivers.base_client import BaseClient
 
 
@@ -12,7 +13,7 @@ class InstagramClient(BaseClient):
         self.client = self.start_client()
         if self.client is None:
             raise Exception("Failed to initialize Instagram client.")
-        self.usernames_filename = "resources/usernames/instagram.txt"
+        self.usernames_filename = f'{PROJECT_ROOT_PATH}/resources/usernames/instagram.txt'
 
     @staticmethod
     def start_client() -> Optional[Client]:
@@ -85,7 +86,6 @@ class InstagramClient(BaseClient):
         print("Blocking complete.")
 
 
-# Entry point for the script
 def main():
     client = InstagramClient()
     client.block_users()
