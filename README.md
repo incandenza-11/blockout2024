@@ -10,20 +10,40 @@ BlockOut2024 is an automated script designed to help you block a predefined list
 
 ## Setup
 
-1. Clone the repository to your local machine:
+Clone the repository to your local machine:
 
 ```shell
 git clone https://github.com/incandenza-11/blockout2024.git
 cd blockout2024
 ```
 
-2. Run the following command to install required dependencies:
+## Run
+
+### Docker
+
+Have [Docker](https://docs.docker.com/desktop/install/windows-install/) installed and running.
+
+1. Run it inside docker:
+
+```shell
+docker-compose run -it --build blockout
+```
+
+Alternatively, you can just use the shortcut:
+
+```shell
+make start
+```
+
+### Regular
+
+1. Run the following command to install required dependencies:
 
 ```shell
 pip install -r requirements.txt
 ```
 
-3. Execute the script:
+2. Execute the script:
 ```shell 
 python3 main.py
 ```
