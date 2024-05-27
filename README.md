@@ -11,9 +11,11 @@ BlockOut2024 is an automated script designed to help you block a predefined list
 ## Setup
 
 1. Clone the repository to your local machine:
-   ```shell
-   git clone https://github.com/incandenza-11/blockout2024.git
-   cd blockout2024
+
+```shell
+git clone https://github.com/incandenza-11/blockout2024.git
+cd blockout2024
+```
 
 2. Run the following command to install required dependencies:
 
