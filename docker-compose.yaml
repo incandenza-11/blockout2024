@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  blockout:
+    container_name: blockout
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: dev
+    volumes:
+      - ./:/app
