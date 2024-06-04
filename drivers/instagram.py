@@ -4,6 +4,7 @@ from typing import Optional
 
 from instagrapi import Client
 from instagrapi.exceptions import UserNotFound, ChallengeRequired, TwoFactorRequired, LoginRequired
+from getpass import getpass
 
 from drivers import PROJECT_ROOT_PATH
 from drivers.base_client import BaseClient
@@ -51,7 +52,7 @@ class InstagramClient(BaseClient):
     def start_client(self) -> Optional[Client]:
         print('Logging in to Instagram...')
         self.username = input('Enter your Instagram username: ')
-        password = input('Enter your Instagram password: ')
+        password = getpass('Enter your Instagram password: ')
         client = Client()
 
         if self._user_has_session(self.username):
