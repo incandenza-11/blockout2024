@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Optional
 
 from instagrapi import Client
-from instagrapi.exceptions import UserNotFound, ChallengeRequired, TwoFactorRequired, LoginRequired
+from instagrapi.exceptions import UserNotFound, ChallengeRequired, TwoFactorRequired, LoginRequired, PleaseWaitFewMinutes
 from getpass import getpass
 
 from drivers import PROJECT_ROOT_PATH
@@ -37,9 +37,12 @@ class InstagramClient(BaseClient):
     def _ensure_logged_in(self) -> None:
         try:
             self.client.get_timeline_feed()  # Checking if session is valid
-        except LoginRequired:
+        except LoginRequired: 
             print('Session expired or invalid. Logging in again...')
             self.client = self.start_client()
+        except PleaseWaitFewMinutes:
+            print('\nPlease wait a few minutes to try again... If it does not help, run `make ig/clear-session` to clear instagram session\n')
+            pass
 
     def _user_has_session(self, username: str) -> bool:
         return os.path.exists(self.session_path_by_username.format(username=username))
