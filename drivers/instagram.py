@@ -21,15 +21,6 @@ class InstagramClient(BaseClient):
         self.client = self.start_client()
 
     @staticmethod
-    def get_usernames_from_file(file_path: str) -> list[str]:
-        try:
-            with open(file_path, "r") as file:
-                print(f'Reading usernames from file: {file_path}')
-                return file.read().splitlines()
-        except FileNotFoundError:
-            raise Exception(f"Error: {file_path} file not found.")
-
-    @staticmethod
     def _append_to_cache(filename: str, content: str) -> None:
         with open(filename, 'a') as file:
             file.write(f'{content}\n')
@@ -41,7 +32,8 @@ class InstagramClient(BaseClient):
             print('Session expired or invalid. Logging in again...')
             self.client = self.start_client()
         except PleaseWaitFewMinutes:
-            print('\nPlease wait a few minutes to try again... If it does not help, run `make ig/clear-session` to clear instagram session\n')
+            print('\nPlease wait a few minutes to try again... If it does not help, '
+                  'run `make ig/clear-session` to clear instagram session\n')
             pass
 
     def _user_has_session(self, username: str) -> bool:
@@ -73,7 +65,8 @@ class InstagramClient(BaseClient):
             except Exception as e2:
                 raise Exception(f'Two-factor login error: {e2}')
         except ChallengeRequired:
-            print('Challenge required. Please approve the login on your Instagram app or enter the code sent to your email/phone.')
+            print('Challenge required. Please approve the login on your Instagram app '
+                  'or enter the code sent to your email/phone.')
             try:
                 client.challenge_resolve(client.last_json)
             except Exception as e2:

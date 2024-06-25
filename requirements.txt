@@ -1,2 +1,3 @@
 instagrapi==2.1.1
 pillow==10.3.0
+twitter-api-client==0.10.22
