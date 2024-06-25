@@ -1,10 +1,10 @@
-# BlockOut2024 Automated Script
+# BlockOut2024 Automated Script (Instagram & Twitter)
 
-BlockOut2024 is an automated script designed to help you block a predefined list of celebrities from Instagram.
+BlockOut2024 is an automated script designed to help you block a predefined list of celebrities from Instagram and Twitter.
 
 ## Features
 
-- Automatically logs into your Instagram account.
+- Automatically logs into your social media accounts.
 - Reads a list of usernames from a text file.
 - Blocks the listed users, providing a success or error message for each.
 
@@ -52,12 +52,14 @@ python3 main.py
 This script requires your Instagram username and password to log in to your account. The credentials are used locally on your machine and are not stored or transmitted to any third party.
 
 ### Usage example
-When you run the script, it will prompt you to enter your Instagram username and password. The script will then log in to your account, read the list of usernames from the instagram.txt file, and attempt to block each user. It will provide a message indicating whether the blocking was successful or if the user was already blocked or does not exist.
-![example.jpeg](resources/example.jpeg)
+When you run the script, it will prompt you to enter your username and password. 
+The script will then log in to your account, read the list of usernames from the file, and attempt to block each user. 
+It will provide a message indicating whether the blocking was successful or if the user was already blocked or does not exist.
 
 The list of usernames that will be blocked when executed are:
 
 - `resources/usernames/instagram.txt` for Instagram
+- `resources/usernames/twitter.txt` for Twitter
 
 ## File Structure
 
@@ -75,4 +77,6 @@ This project is licensed under the MIT License - see the `LICENSE` file for deta
 
 ## Acknowledgements
 
-Special thanks to the contributors of the `instagrapi` package for providing a robust API for interacting with Instagram.
+Special thanks to:
+* the contributors of [instagrapi](https://github.com/subzeroid/instagrapi)
+* the contributors of [twitter-api-client](https://github.com/trevorhobenshield/twitter-api-client)
